@@ -1,4 +1,8 @@
+package br.ceub.service;
 import java.util.List;
+
+import br.ceub.model.Usuario;
+import repository.UsuarioRepository;
 
 public class UsuarioService {
     private UsuarioRepository usuarioRepository;

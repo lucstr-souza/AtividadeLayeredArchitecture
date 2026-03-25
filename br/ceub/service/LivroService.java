@@ -1,4 +1,8 @@
+package br.ceub.service;
 import java.util.List;
+
+import br.ceub.model.Livro;
+import repository.LivroRepository;
 
 public class LivroService {
     private LivroRepository livroRepository;

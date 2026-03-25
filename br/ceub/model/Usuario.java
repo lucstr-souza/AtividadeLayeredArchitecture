@@ -1,3 +1,4 @@
+package br.ceub.model;
 public class Usuario {
     private int id;
     private String nome;

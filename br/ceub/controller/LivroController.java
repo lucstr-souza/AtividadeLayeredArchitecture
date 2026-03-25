@@ -1,4 +1,8 @@
+package br.ceub.controller;
 import java.util.List;
+
+import br.ceub.model.Livro;
+import br.ceub.service.LivroService;
 
 public class LivroController {
     private LivroService livroService;
@@ -11,24 +15,29 @@ public class LivroController {
         this.livroService = livroService;
     }
     
-    public void cadastrar(Livro livro) {
+    public Livro cadastrar(Livro livro) {
+    	return livroService.cadastrar(livro);
     }
 
     public Livro buscarPorId(int id) {
-        return null;
+        return livroService.buscarPorId(id);
     }
 
     public List<Livro> buscarPorNome(String nome) {
-        return null;
+        return livroService.buscarPorNome(nome);
     }
 
     public List<Livro> listarTodos() {
-        return null;
+        return livroService.listarTodos();
     }
 
-    public void alterar(Livro livro) {
+    public Livro alterar(Livro livro) {
+    	 livroService.alterar(livro);
+    	 return livro;
     }
 
     public void remover(int id) {
+    	livroService.remover(id);
+    	
     }
 }

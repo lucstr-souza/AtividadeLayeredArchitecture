@@ -1,4 +1,10 @@
+package br.ceub.service;
 import java.util.List;
+
+import br.ceub.model.Emprestimo;
+import repository.EmprestimoRepository;
+import repository.LivroRepository;
+import repository.UsuarioRepository;
 
 public class EmprestimoService {
     private EmprestimoRepository emprestimoRepository;
