@@ -1,7 +1,9 @@
 package br.ceub.service;
+import java.time.LocalDate;
 import java.util.List;
 
 import br.ceub.model.Emprestimo;
+import br.ceub.model.Livro;
 import br.ceub.repository.EmprestimoRepository;
 import br.ceub.repository.LivroRepository;
 import br.ceub.repository.UsuarioRepository;
@@ -27,7 +29,29 @@ public class EmprestimoService {
     }
 
     public Emprestimo realizarEmprestimo(int usuarioId, int livroId, int diasEmprestimo) {
-        return null;
+    	Livro livro = livroRepository.buscarPorId(livroId);
+    	if(livro == null)
+    		throw new RuntimeException("Livro não encontrado.");
+    	
+    	List<Emprestimo> emprestimosAtivos = emprestimoRepository.listarEmprestimosAtivos();
+    	for (Emprestimo e : emprestimosAtivos) {
+    		if (e.getLivroId() == livroId) {
+    			throw new  RuntimeException("Livro ja emprestado.");
+    		}
+    	}
+    	
+    	LocalDate dataAtual = LocalDate.now();
+    	Emprestimo e = new Emprestimo(
+    			proximoId++,
+    			usuarioId,
+    			livroId,
+    			dataAtual,
+    			dataAtual.plusDays(diasEmprestimo)
+    			);
+    	
+    	emprestimoRepository.salvar(e);
+    	return e;
+    	
     }
 
     public void devolverLivro(int emprestimoId) {
